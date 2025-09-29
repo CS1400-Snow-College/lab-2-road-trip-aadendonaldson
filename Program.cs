@@ -9,53 +9,70 @@ string location = Console.ReadLine()!;
 Console.Write("Who will be driving?");
 Console.ReadLine();
 string driver = Console.ReadLine()!;
-Console.Write("How many miles to get to" + location + "?");
+Console.Write("How many miles to get to your location?");
 Console.ReadLine();
-string miles = Console.ReadLine()!;
-int intmiles = Convert.ToInt32(miles);
+double distanceOneWay = double.Parse(Console.ReadLine()!);
 Console.Write("Whats the average speed you will travel(MPH)?");
 Console.ReadLine();
-string speed = Console.ReadLine()!;
-int intspeed = Convert.ToInt32(speed);
+double speed = double.Parse(Console.ReadLine()!);
 Console.Write("How many MPG does your car get?");
 Console.ReadLine();
-string MPG = Console.ReadLine()!;
-int intMPG = Convert.ToInt32(MPG);
+double mpg = double.Parse(Console.ReadLine()!);
 Console.Write("How many gallons of gas does your car hold?");
 Console.ReadLine();
-string gas = Console.ReadLine()!;
-int intgas = Convert.ToInt32(gas);
+double gasCarHolds = double.Parse(Console.ReadLine()!);
 Console.Write("Excluding your driver, how many riders are there?");
 Console.ReadLine();
-string riders = Console.ReadLine()!;
-int intriders = Convert.ToInt32(riders);
+double ridersMinusDriver = double.Parse(Console.ReadLine()!);
 Console.Write("What currency are you using (give the symbol)?");
 Console.ReadLine();
 string currency = Console.ReadLine()!;
 Console.Write("What is the fuel price per gallon($)?");
 Console.ReadLine();
-string ppg = Console.ReadLine()!;
-int intppg = Convert.ToInt32(ppg);
+double priceOfFuel = double.Parse(Console.ReadLine()!);
 
-Console.Write("Driver: " + driver);
-Console.Write("Currency: " + currency);
+//The Calculations
+double fullTripDistance = distanceOneWay * 2;
+double timeSpentDriving = distanceOneWay / speed;
+double hours = (double)timeSpentDriving;
+double minutes = (double)((timeSpentDriving - hours) * 60);
 
-Console.Write("Distance (miles): " + intmiles);
-Console.Write("Average Speed (mph): " + intspeed);
-Console.Write("Time Driving: " + intmiles / intspeed + "H " + intmiles % intspeed + "M.");
+double fuelNeeded = fullTripDistance / mpg;
+double distencePerTank = mpg * gasCarHolds;
+double stopsForFuel = (double)Math.Ceiling(fullTripDistance / distencePerTank);
 
-Console.Write("Vehicle Miles per Gallon: " + intMPG);
-Console.Write("Fuel Needed (round trip):" + intmiles / intMPG * 2 + " gallons");
-Console.Write("Range per tank: " + intMPG * intgas);
-Console.Write("Estimated fuel stops: " + (intmiles / intMPG * 2) / intMPG);
+double fuelCostTotal = fuelNeeded * priceOfFuel;
+double allTheBeings = ridersMinusDriver + 1;
+double costPerPerson = fuelCostTotal / allTheBeings;
+double costPerMile = fuelCostTotal / fullTripDistance;
+double costPerHour = fuelCostTotal / timeSpentDriving;
 
-Console.Write("Gas Price per gallon: " + currency + intppg);
-Console.Write("Fuel Cost: " + currency + (intmiles / intMPG * 2) * intppg);
-Console.Write("Riders: " + (intriders + 1));
-int intfuel = intmiles / intMPG * 2 * intppg ;
-Console.Write("Cost per person: " + currency + intfuel / (intriders + 1) + "+ snacks");
-Console.Write("Cost per mile: " + currency + intfuel / intmiles);
-Console.Write("Cost per driving hour" + currency + intfuel / (intmiles / intspeed));
+double songLength = 3.5;
+double numberOfSongs = (double)Math.Round(timeSpentDriving * 60) / songLength;
 
-Console.Write("Average Song Length (min): 3 ");
-Console.Write("Number of songs needed: " + (intmiles / intspeed) / 3.5);
+
+// The Details
+
+Console.WriteLine("Driver: " + driver);
+Console.WriteLine("Currency: " + currency);
+
+Console.WriteLine("Distance (miles): " + fullTripDistance);
+Console.WriteLine("Average Speed (mph): " + speed);
+Console.WriteLine("Time Driving: " + hours + "H " + minutes + "M.");
+
+Console.WriteLine("Vehicle Miles per Gallon: " + mpg);
+Console.WriteLine("Fuel Needed (round trip):" + fuelNeeded + " gallons");
+Console.WriteLine("Range per tank: " + distencePerTank);
+Console.WriteLine("Estimated fuel stops: " + stopsForFuel);
+
+Console.WriteLine("Gas Price per gallon: " + currency + priceOfFuel);
+Console.WriteLine("Fuel Cost: " + currency + fuelCostTotal);
+Console.WriteLine("Riders: " + allTheBeings);
+Console.WriteLine("Cost per person: " + currency + costPerPerson + "+ snacks");
+Console.WriteLine("Cost per mile: " + currency + costPerMile);
+Console.WriteLine("Cost per driving hour" + currency + costPerHour);
+
+Console.WriteLine("Average Song Length (min):" + songLength);
+Console.WriteLine("Number of songs needed:" + numberOfSongs );
+
+
