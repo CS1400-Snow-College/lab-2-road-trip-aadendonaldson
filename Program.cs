@@ -58,21 +58,21 @@ Console.WriteLine("Currency: " + currency);
 
 Console.WriteLine("Distance (miles): " + fullTripDistance);
 Console.WriteLine("Average Speed (mph): " + speed);
-Console.WriteLine("Time Driving: " + hours + "H " + minutes + "M.");
+Console.WriteLine("Time Driving: " + hours.ToString("F2") + "H " + minutes.ToString("F2") + "M.");
 
 Console.WriteLine("Vehicle Miles per Gallon: " + mpg);
-Console.WriteLine("Fuel Needed (round trip):" + fuelNeeded + " gallons");
-Console.WriteLine("Range per tank: " + distencePerTank);
+Console.WriteLine("Fuel Needed (round trip):" + fuelNeeded.ToString("F2") + " gallons");
+Console.WriteLine("Range per tank: " + distencePerTank.ToString("F2"));
 Console.WriteLine("Estimated fuel stops: " + stopsForFuel);
 
-Console.WriteLine("Gas Price per gallon: " + currency + priceOfFuel);
-Console.WriteLine("Fuel Cost: " + currency + fuelCostTotal);
+Console.WriteLine("Gas Price per gallon: " + currency + priceOfFuel.ToString("F2"));
+Console.WriteLine("Fuel Cost: " + currency + fuelCostTotal.ToString("F2"));
 Console.WriteLine("Riders: " + allTheBeings);
-Console.WriteLine("Cost per person: " + currency + costPerPerson + "+ snacks");
-Console.WriteLine("Cost per mile: " + currency + costPerMile);
-Console.WriteLine("Cost per driving hour" + currency + costPerHour);
+Console.WriteLine("Cost per person: " + currency + costPerPerson.ToString("F2") + " + snacks");
+Console.WriteLine("Cost per mile: " + currency + costPerMile.ToString("F2"));
+Console.WriteLine("Cost per driving hour" + currency + costPerHour.ToString("F2"));
 
 Console.WriteLine("Average Song Length (min):" + songLength);
-Console.WriteLine("Number of songs needed:" + numberOfSongs );
+Console.WriteLine("Number of songs needed:" + numberOfSongs.ToString("F2") );
 
 
